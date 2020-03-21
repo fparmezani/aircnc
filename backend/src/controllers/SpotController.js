@@ -7,6 +7,11 @@ module.exports = {
     const spots = await Spot.find({ techs: tech });
     return res.json(spots);
   },
+  async delete(req, res) {
+    const { _id } = req.body;
+    const response = await Spot.deleteOne({ _id });
+    return res.json(response);
+  },
   async store(req, res) {
     const { filename } = req.file;
     const { company, techs, price } = req.body;
